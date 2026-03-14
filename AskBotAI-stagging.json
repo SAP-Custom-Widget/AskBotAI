@@ -1,0 +1,520 @@
+{
+  "id": "com.rohitchouhan.sap.askbotai",
+  "version": "1.0.0",
+  "name": "AskBot AI",
+  "description": "Custom AI-Powered Chat Bot Widget for SAP Analytics Cloud",
+  "newInstancePrefix": "AskBotAI",
+  "vendor": "rohitchouhan.com",
+  "eula": "rohitchouhan.com",
+  "license": "MIT",
+  "icon": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/icon.png",
+  "imports": [
+    "datasource"
+  ],
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "com-rohitchouhan-sap-askbotai",
+      "url": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/dist/AskBotAI.bundle.js",
+      "integrity": "sha512-plUNyR8xOjEfyOZabxsVdbNMhZZU/YwuJOuGzWIcvNDyqMggVoM11+XFrkKnGe4b6JsdD0EmjSFGR+DOihhozg==",
+      "ignoreIntegrity": false
+    },
+    {
+      "kind": "builder",
+      "tag": "com-rohitchouhan-sap-askbotai-builder",
+      "url": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/dist/AskBotAI.bundle.js",
+      "integrity": "sha512-plUNyR8xOjEfyOZabxsVdbNMhZZU/YwuJOuGzWIcvNDyqMggVoM11+XFrkKnGe4b6JsdD0EmjSFGR+DOihhozg==",
+      "ignoreIntegrity": false
+    }
+  ],
+  "types": {
+    "Action": {
+      "description": "An action button for a Q&A item",
+      "properties": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "Text displayed on the button",
+          "mandatory": true
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Type of action (link, reply, trigger, plain)",
+          "mandatory": true
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "description": "URL for link, text for reply, keyword for trigger, or unique ID for plain",
+          "mandatory": true
+        }
+      ]
+    },
+    "QAItem": {
+      "description": "A Question and Answer pair",
+      "properties": [
+        {
+          "name": "question",
+          "type": "string",
+          "description": "Question keyword(s)",
+          "mandatory": true
+        },
+        {
+          "name": "answer",
+          "type": "string",
+          "description": "Answer (markdown supported)",
+          "mandatory": true
+        },
+        {
+          "name": "actions",
+          "type": "Action[]",
+          "description": "Action buttons. Supported types: link, reply, trigger, plain.",
+          "mandatory": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Type (e.g. Flow, Form)",
+          "mandatory": false
+        },
+        {
+          "name": "submitButtonText",
+          "type": "string",
+          "description": "Custom text for the submit button (for Form type)",
+          "mandatory": false
+        },
+        {
+          "name": "submitSuccessText",
+          "type": "string",
+          "description": "Custom success message after form submission",
+          "mandatory": false
+        },
+        {
+          "name": "fields",
+          "type": "FormField[]",
+          "description": "Form fields (for Form type)",
+          "mandatory": false
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Enabled status",
+          "mandatory": false
+        }
+      ]
+    },
+    "FormField": {
+      "description": "A field in an interactive form",
+      "properties": [
+        {
+          "name": "label",
+          "type": "string",
+          "description": "Field label displayed to the user",
+          "mandatory": true
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Field type (text, number, date, password, textarea, dropdown, radio, checkbox)",
+          "mandatory": true
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique ID for the field (used in collected data)",
+          "mandatory": true
+        },
+        {
+          "name": "options",
+          "type": "string",
+          "description": "Comma-separated options (for dropdown, radio, and multi-select checkbox)",
+          "mandatory": false
+        }
+      ]
+    },
+    "FormItem": {
+      "description": "A Form item to be added programmatically",
+      "properties": [
+        {
+          "name": "question",
+          "type": "string",
+          "description": "Question keyword(s) or Flow ID",
+          "mandatory": true
+        },
+        {
+          "name": "fields",
+          "type": "FormField[]",
+          "description": "Array of form fields",
+          "mandatory": true
+        },
+        {
+          "name": "submitButtonText",
+          "type": "string",
+          "description": "Custom text for the submit button",
+          "mandatory": false
+        },
+        {
+          "name": "submitSuccessText",
+          "type": "string",
+          "description": "Custom success message after submission",
+          "mandatory": false
+        },
+        {
+          "name": "actions",
+          "type": "Action[]",
+          "description": "Additional buttons to show with the form",
+          "mandatory": false
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether the form is active",
+          "mandatory": false
+        }
+      ]
+    }
+  },
+  "properties": {
+    "notificationToggle": {
+      "description": "Enable or disable notifications for new messages",
+      "type": "boolean",
+      "default": true
+    },
+    "designType": {
+      "description": "Widget UI Design",
+      "type": "string",
+      "default": "Widget"
+    },
+    "overlayPosition": {
+      "description": "Position for Overlay Widget",
+      "type": "string",
+      "default": "bottom-right"
+    },
+    "botName": {
+      "description": "Name of the Chat Bot",
+      "type": "string",
+      "default": "AskBot AI"
+    },
+    "botStatus": {
+      "description": "Bot Status Text",
+      "type": "string",
+      "default": "Online"
+    },
+    "defaultGreeting": {
+      "description": "Bot Default Greeting Message",
+      "type": "string",
+      "default": "Hi! How can I help you today?"
+    },
+    "enableSpeakerFeatures": {
+      "description": "Enable Speaker Features (TTS output)",
+      "type": "boolean",
+      "default": true
+    },
+    "enableMicFeatures": {
+      "description": "Enable Microphone Features (Voice input)",
+      "type": "boolean",
+      "default": true
+    },
+    "quickQuestions": {
+      "description": "Comma-separated list of quick questions to display initially",
+      "type": "string",
+      "default": "How to Install AskBot, What is AskBot, Who Developed AskBot, Contact Us"
+    },
+    "fallbackMessage": {
+      "description": "Bot Fallback Message",
+      "type": "string",
+      "default": "I'm sorry, I don't understand that."
+    },
+    "themeColor": {
+      "description": "Theme Color",
+      "type": "string",
+      "default": "#0078D4"
+    },
+    "widgetHeight": {
+      "description": "Widget Height (px)",
+      "type": "integer",
+      "default": 500
+    },
+    "qaData": {
+      "description": "Collection of Q&A pairs",
+      "type": "QAItem[]",
+      "default": [
+        {
+          "question": "How to Install AskBot, AskBot Installation, Install AskBot",
+          "answer": "![Logo](https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI/icon.png)\n\nTo get started with **AskBot**, first download the [AskBotAI.json](https://sap-custom-widget.rohitchouhan.com/?dl=AskBotAI) file.\n\n**Key Features**:-\n| Feature | Description | Status |\n| :--- | :--- | :--- |\n| **NLP Search** |Natural Language Processing AI | ✅ Supported |\n| **Markdown** | Tables, Lists, **Bold**, and Links | ✅ Supported |\n| **Voice Input** | Integrated Speech-to-Text (STT) | ✅ Supported |\n| **Speech Output** | Natural Text-to-Speech (TTS) | ✅ Supported |\n| **Interactive** | Buttons, Links, and Flow Triggers | ✅ Supported |\n",
+          "actions": [
+            {
+              "text": "✅ Yes, Next",
+              "type": "trigger",
+              "value": "step_2"
+            }
+          ],
+          "enabled": true
+        },
+        {
+          "question": "step_2",
+          "answer": "Log in to your **SAC** tenet, navigate to **Stories** in the left panel, and click on **Custom Widget**.",
+          "actions": [
+            {
+              "text": "✅ Yes, Next",
+              "type": "trigger",
+              "value": "step_3"
+            }
+          ],
+          "enabled": true,
+          "type": "Flow"
+        },
+        {
+          "question": "step_3",
+          "answer": "Next, click the **+** icon ➕ to upload your downloaded **AskBotAI.json** file. 📁 \n\n🎉 Congratulations, you are all set! 🚀",
+          "actions": [],
+          "enabled": true,
+          "type": "Flow"
+        },
+        {
+          "question": "Developer of AskBot, Creator, AskBot Owner",
+          "answer": "AskBot is an AI-powered custom chat box designed for SAP Analytics Cloud. It is developed by Rohit Chouhan.",
+          "actions": [
+            {
+              "text": "About Developer",
+              "type": "link",
+              "value": "https://linkedin.com/in/itsrohitchouhan"
+            }
+          ]
+        },
+        {
+          "question": "What is AskBot, Working of AskBot, How AskBot Works, What is the Working of AskBot, AskBot Functionality, AskBot Capabilities, What Does AskBot Do, AskBot AI Features",
+          "answer": "AskBot helps you integrate a chatbot system into SAP Analytics Cloud. It is AI-powered and helps users get accurate responses by understanding the intent of the question, not just fixed keywords.",
+          "actions": [
+            {
+              "text": "Know More",
+              "type": "link",
+              "value": ""
+            },
+            {
+              "text": "About Developer",
+              "type": "reply",
+              "value": "Who Developed AskBot"
+            }
+          ]
+        },
+        {
+          "question": "contact us, contacts, contacting, need support, support ticket",
+          "answer": "",
+          "enabled": true,
+          "type": "Form",
+          "submitButtonText": "Submit Form",
+          "submitSuccessText": "Your message has been sent successfully!",
+          "fields": [
+            {
+              "label": "Your Name",
+              "type": "text",
+              "id": "name"
+            },
+            {
+              "label": "Your Email",
+              "type": "text",
+              "id": "email"
+            },
+            {
+              "label": "Your Department",
+              "type": "dropdown",
+              "id": "dept",
+              "options": "IT, Consulting, Security"
+            },
+            {
+              "label": "SAP User?",
+              "type": "radio",
+              "id": "sap_user",
+              "options": "Yes,No"
+            },
+            {
+              "label": "Your Message",
+              "type": "textarea",
+              "id": "message"
+            }
+          ]
+        }
+      ]
+    },
+    "threshold": {
+      "description": "AI Accuracy Engine (Threshold percentage)",
+      "type": "integer",
+      "default": 75
+    },
+    "showBotIcon": {
+      "description": "Show or Hide Bot Icon in Header",
+      "type": "boolean",
+      "default": true
+    },
+    "customBotIcon": {
+      "description": "Custom Bot Icon Image Link (Direct URL)",
+      "type": "string",
+      "default": ""
+    },
+    "enableHistory": {
+      "description": "Enable Persistent Chat History per URL",
+      "type": "boolean",
+      "default": true
+    },
+    "overlayWidth": {
+      "description": "Width of the Floating Overlay (px)",
+      "type": "integer",
+      "default": 350
+    }
+  },
+  "methods": {
+    "enableUpdateNotification": {
+      "description": "Enable or disable update notifications",
+      "parameters": [
+        {
+          "name": "notificationToggle",
+          "type": "boolean",
+          "description": "Enable or disable update notifications"
+        }
+      ],
+      "body": "this.notificationToggle = notificationToggle;"
+    },
+    "isUpdateNotificationEnable": {
+      "description": "Check if update notifications are enabled",
+      "returnType": "boolean",
+      "body": "return this.notificationToggle;"
+    },
+    "setQuickQuestions": {
+      "description": "Set the quick questions programmatically",
+      "parameters": [
+        {
+          "name": "questions",
+          "type": "string",
+          "description": "Comma-separated list of questions"
+        }
+      ],
+      "returnType": "boolean"
+    },
+    "addQA": {
+      "description": "Add a new Question and Answer pair",
+      "parameters": [
+        {
+          "name": "question",
+          "type": "QAItem",
+          "description": "The question string"
+        }
+      ],
+      "returnType": "boolean"
+    },
+    "deleteQA": {
+      "description": "Delete a specific Question and Answer pair",
+      "parameters": [
+        {
+          "name": "question",
+          "type": "string",
+          "description": "The question to delete (exact match)"
+        }
+      ],
+      "returnType": "boolean"
+    },
+    "clearQA": {
+      "description": "Clear all Question and Answer pairs",
+      "returnType": "boolean"
+    },
+    "getAllQA": {
+      "description": "Get all Question and Answer pairs",
+      "returnType": "QAItem[]"
+    },
+    "getQA": {
+      "description": "Get a specific Question and Answer pair",
+      "parameters": [
+        {
+          "name": "question",
+          "type": "string",
+          "description": "The question to find (exact match)"
+        }
+      ],
+      "returnType": "QAItem"
+    },
+    "openChat": {
+      "description": "Open chat in Overlay mode",
+      "returnType": "boolean"
+    },
+    "closeChat": {
+      "description": "Close chat in Overlay mode",
+      "returnType": "boolean"
+    },
+    "setThreshold": {
+      "description": "Set the AI Accuracy Engine threshold percentage",
+      "parameters": [
+        {
+          "name": "threshold",
+          "type": "integer",
+          "description": "The threshold percentage (0-100)"
+        }
+      ],
+      "body": "this.threshold = threshold;"
+    },
+    "getThreshold": {
+      "description": "Get the current AI Accuracy Engine threshold percentage",
+      "returnType": "integer",
+      "body": "return this.threshold;"
+    },
+    "getClickedPlainActionButton": {
+      "description": "Get the ID of the last clicked plain action button",
+      "returnType": "string"
+    },
+    "getLastFormData": {
+      "description": "Get the data from the last submitted form as a JSON string",
+      "returnType": "Selection"
+    },
+    "addForm": {
+      "description": "Programmatically add a new Interactive Form",
+      "parameters": [
+        {
+          "name": "formItem",
+          "type": "FormItem",
+          "description": "The form item object"
+        }
+      ],
+      "returnType": "boolean"
+    },
+    "deleteForm": {
+      "description": "Delete a form based on its question/ID",
+      "parameters": [
+        {
+          "name": "question",
+          "type": "string",
+          "description": "The question to delete"
+        }
+      ],
+      "returnType": "boolean"
+    }
+  },
+  "events": {
+    "onMessageReceived": {
+      "description": "Event triggered when bot replies."
+    },
+    "onMessageSent": {
+      "description": "Event triggered when user sends a message."
+    },
+    "onActionClicked": {
+      "description": "Event triggered when an action button is clicked, use getClickedPlainActionButton() to get the ID of the clicked action button."
+    },
+    "onChatOpened": {
+      "description": "Event triggered when the chat window is opened."
+    },
+    "onChatClosed": {
+      "description": "Event triggered when the chat window is closed."
+    },
+    "onMicStarted": {
+      "description": "Event triggered when microphone listening starts."
+    },
+    "onMicEnded": {
+      "description": "Event triggered when microphone listening ends."
+    },
+    "onQuickQuestionClicked": {
+      "description": "Event triggered when a quick question chip is clicked."
+    },
+    "onFormSubmitted": {
+      "description": "Event triggered when an interactive form is submitted. Use getLastFormData() to retrieve the data."
+    }
+  }
+}
