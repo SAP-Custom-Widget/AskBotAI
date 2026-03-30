@@ -16,14 +16,14 @@
       "kind": "main",
       "tag": "com-rohitchouhan-sap-askbotai",
       "url": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/dist/AskBotAI.bundle.js",
-      "integrity": "sha512-dD5ify84awVGhbcajxLOxbgwuT8wsl6cgCXcf3/anL/zMX8bz32nPY2ByPjiJHi0kC4qsrJMWVJNvQ0WXjxeQw==",
+      "integrity": "sha512-yOu9oEqHHqHw/aeCJRDTgV2Zvf7ShfK0s3UFgngEbUaB7qCX9zHmEE64c6lD6v22k+hEFJTDXzixWJMapI1jrQ==",
       "ignoreIntegrity": false
     },
     {
       "kind": "builder",
       "tag": "com-rohitchouhan-sap-askbotai-builder",
       "url": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/dist/AskBotAI.bundle.js",
-      "integrity": "sha512-dD5ify84awVGhbcajxLOxbgwuT8wsl6cgCXcf3/anL/zMX8bz32nPY2ByPjiJHi0kC4qsrJMWVJNvQ0WXjxeQw==",
+      "integrity": "sha512-yOu9oEqHHqHw/aeCJRDTgV2Zvf7ShfK0s3UFgngEbUaB7qCX9zHmEE64c6lD6v22k+hEFJTDXzixWJMapI1jrQ==",
       "ignoreIntegrity": false
     }
   ],
@@ -97,6 +97,12 @@
           "mandatory": false
         },
         {
+          "name": "formId",
+          "type": "string",
+          "description": "Unique identifier for the form (optional)",
+          "mandatory": false
+        },
+        {
           "name": "enabled",
           "type": "boolean",
           "description": "Enabled status",
@@ -164,6 +170,12 @@
           "name": "actions",
           "type": "Action[]",
           "description": "Additional buttons to show with the form",
+          "mandatory": false
+        },
+        {
+          "name": "formId",
+          "type": "string",
+          "description": "Unique identifier for the form (optional)",
           "mandatory": false
         },
         {
@@ -465,6 +477,10 @@
       "description": "Get the data from the last submitted form as a JSON string",
       "returnType": "Selection"
     },
+    "getSubmittedFormId": {
+      "description": "Get the formId of the last submitted form",
+      "returnType": "string"
+    },
     "addForm": {
       "description": "Programmatically add a new Interactive Form",
       "parameters": [
@@ -483,6 +499,51 @@
           "name": "question",
           "type": "string",
           "description": "The question to delete"
+        }
+      ],
+      "returnType": "boolean"
+    },
+    "getSentMessage": {
+      "description": "Get the last sent message",
+      "returnType": "string"
+    },
+    "getRecievedMessage": {
+      "description": "Get the last received message",
+      "returnType": "string"
+    },
+    "sendMessage": {
+      "description": "Send a message to the bot programmatically",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "The message text to send to the bot"
+        },
+        {
+          "name": "showInChatbox",
+          "type": "boolean",
+          "description": "Whether to display the user message in the chatbox"
+        }
+      ],
+      "returnType": "boolean"
+    },
+    "checkMatch": {
+      "description": "Check if a user input matches the target keywords (fuzzy search)",
+      "parameters": [
+        {
+          "name": "targetKeywords",
+          "type": "string",
+          "description": "The expected keywords (e.g. 'date filter, filter on date')"
+        },
+        {
+          "name": "userInput",
+          "type": "string",
+          "description": "The user input string to test"
+        },
+        {
+          "name": "thresholdPercentage",
+          "type": "integer",
+          "description": "The match threshold percentage (0-100)"
         }
       ],
       "returnType": "boolean"
