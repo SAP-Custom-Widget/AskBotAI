@@ -16,14 +16,14 @@
       "kind": "main",
       "tag": "com-rohitchouhan-sap-askbotai",
       "url": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/dist/AskBotAI.bundle.js",
-      "integrity": "sha512-yOu9oEqHHqHw/aeCJRDTgV2Zvf7ShfK0s3UFgngEbUaB7qCX9zHmEE64c6lD6v22k+hEFJTDXzixWJMapI1jrQ==",
+      "integrity": "sha512-FRK4Sfp0rf1X42Ts3TH/UHOnRfmYmrhUSJAiUFGg/OdcN4a4jjcYgHtlToFzNklQqyWnIvXdJqL2H27tdNMmyg==",
       "ignoreIntegrity": false
     },
     {
       "kind": "builder",
       "tag": "com-rohitchouhan-sap-askbotai-builder",
       "url": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/dist/AskBotAI.bundle.js",
-      "integrity": "sha512-yOu9oEqHHqHw/aeCJRDTgV2Zvf7ShfK0s3UFgngEbUaB7qCX9zHmEE64c6lD6v22k+hEFJTDXzixWJMapI1jrQ==",
+      "integrity": "sha512-FRK4Sfp0rf1X42Ts3TH/UHOnRfmYmrhUSJAiUFGg/OdcN4a4jjcYgHtlToFzNklQqyWnIvXdJqL2H27tdNMmyg==",
       "ignoreIntegrity": false
     }
   ],
@@ -147,6 +147,12 @@
           "type": "string",
           "description": "Question keyword(s) or Flow ID",
           "mandatory": true
+        },
+        {
+          "name": "answer",
+          "type": "string",
+          "description": "Answer (markdown supported)",
+          "mandatory": false
         },
         {
           "name": "fields",
