@@ -1,14 +1,25 @@
 # ⚠️ Staging Branch - Under Development
 
-> **WARNING:** This branch is strictly for **development and testing purposes** only.
+> **Warning:** The `stagging` branch is intended strictly for **development, testing, and internal validation**.
 
-Please **do NOT** use the `stagging` branch for production environments. It contains experimental features and may be unstable.
+This branch may contain experimental features, incomplete changes, or unstable functionality. It **must not be used in production environments**.
 
-### ✅ Recommended:
-Always use the **`main`** branch for stable, production-ready releases.
+### 🚫 Confidentiality & Sharing
+
+Please **do not share, distribute, publish, or disclose** this repository, its source code, features, documentation, or implementation details until the Custom Widget has been officially released for production.
+
+The officially released and production-ready version will be available in the [`main`](../../tree/main) branch.
+
+### ✅ Production Usage
+
+For stable and production-ready releases, always use the: **`main` branch**
+
+Do not deploy or integrate the `stagging` branch into production systems.
 
 ---
 
 ### 📬 Contact & Support
-If you have any questions or doubts, please contact **Rohit Chouhan**:
-🔗 [LinkedIn Profile](https://linkedin.com/in/itsrohitchouhan)
+
+For questions, concerns, or clarification regarding this project, please contact:
+
+**Rohit Chouhan** |📧 [me@rohitchouhan.com](mailto:me@rohitchouhan.com) |🔗 [LinkedIn Profile](https://linkedin.com/in/itsrohitchouhan)
