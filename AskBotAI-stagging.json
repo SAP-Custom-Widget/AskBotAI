@@ -14,14 +14,14 @@
       "kind": "main",
       "tag": "com-rohitchouhan-sap-askbotai",
       "url": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/dist/AskBotAI.bundle.js",
-      "integrity": "sha512-DCV7QQunXkRL3XiKnqkXbNo6dlg2VVtzwaZm8V6ElBBWa3358hFoxUwbbJH6uSxN57eH6qO4NYItJ46dwQ0OFw==",
+      "integrity": "sha512-HHlG2dbUDgZ8OwG9CS5gAgAYoeWos+hyT1JtGgSAjIHFytpVNIOE1Uo61+f5EFOfBYPsoRFixqZxp50htC+QLw==",
       "ignoreIntegrity": false
     },
     {
       "kind": "builder",
       "tag": "com-rohitchouhan-sap-askbotai-builder",
       "url": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/dist/AskBotAI.bundle.js",
-      "integrity": "sha512-DCV7QQunXkRL3XiKnqkXbNo6dlg2VVtzwaZm8V6ElBBWa3358hFoxUwbbJH6uSxN57eH6qO4NYItJ46dwQ0OFw==",
+      "integrity": "sha512-HHlG2dbUDgZ8OwG9CS5gAgAYoeWos+hyT1JtGgSAjIHFytpVNIOE1Uo61+f5EFOfBYPsoRFixqZxp50htC+QLw==",
       "ignoreIntegrity": false
     }
   ],

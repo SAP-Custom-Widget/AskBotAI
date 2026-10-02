@@ -22,4 +22,4 @@ Do not deploy or integrate the `stagging` branch into production systems.
 
 For questions, concerns, or clarification regarding this project, please contact:
 
-**Rohit Chouhan** |📧 [me@rohitchouhan.com](mailto:me@rohitchouhan.com) |🔗 [LinkedIn Profile](https://linkedin.com/in/itsrohitchouhan)
+[**Rohit Chouhan**](https://rohitchouhan.com) |📧 [me@rohitchouhan.com](mailto:me@rohitchouhan.com) |🔗 [LinkedIn Profile](https://linkedin.com/in/itsrohitchouhan)
