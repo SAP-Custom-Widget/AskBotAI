@@ -8,22 +8,20 @@
   "eula": "rohitchouhan.com",
   "license": "MIT",
   "icon": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/icon.png",
-  "imports": [
-    "datasource"
-  ],
+  "imports": [],
   "webcomponents": [
     {
       "kind": "main",
       "tag": "com-rohitchouhan-sap-askbotai",
       "url": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/dist/AskBotAI.bundle.js",
-      "integrity": "sha512-jCsZCbwNsi9OGINakKk1hD1DxY4jyZkPZZjGuywwSH/1CnOGrGnsnVmXvBn1HTl7u4TsibYxprX77z862RF4Cw==",
+      "integrity": "sha512-klZOK2leXs27L5eQUKyUCWEHfeesITWtuDmPefc1Urb13s+gkVoXZ3Soi7uyHgR66qoXHXLkRGSljsAV/QMQww==",
       "ignoreIntegrity": false
     },
     {
       "kind": "builder",
       "tag": "com-rohitchouhan-sap-askbotai-builder",
       "url": "https://cdn.jsdelivr.net/gh/SAP-Custom-Widget/AskBotAI@stagging/dist/AskBotAI.bundle.js",
-      "integrity": "sha512-jCsZCbwNsi9OGINakKk1hD1DxY4jyZkPZZjGuywwSH/1CnOGrGnsnVmXvBn1HTl7u4TsibYxprX77z862RF4Cw==",
+      "integrity": "sha512-klZOK2leXs27L5eQUKyUCWEHfeesITWtuDmPefc1Urb13s+gkVoXZ3Soi7uyHgR66qoXHXLkRGSljsAV/QMQww==",
       "ignoreIntegrity": false
     }
   ],
@@ -374,7 +372,7 @@
     "enableHistory": {
       "description": "Enable Persistent Chat History per URL",
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "overlayWidth": {
       "description": "Width of the Floating Overlay (px)",
